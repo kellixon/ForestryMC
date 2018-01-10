@@ -1,12 +1,9 @@
 package forestry.core.blocks;
 
+import com.google.common.base.Preconditions;
+
 import javax.annotation.Nullable;
 
-import com.google.common.base.Preconditions;
-import forestry.api.core.IModelManager;
-import forestry.core.tiles.TileForestry;
-import forestry.core.utils.BlockUtil;
-import forestry.core.utils.ItemStackUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
@@ -16,10 +13,17 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import forestry.api.core.IModelManager;
+import forestry.core.tiles.TileForestry;
+import forestry.core.utils.BlockUtil;
+import forestry.core.utils.ItemStackUtil;
 
 public class MachineProperties<T extends TileForestry> implements IMachineProperties<T> {
 	private final String name;
@@ -56,14 +60,14 @@ public class MachineProperties<T extends TileForestry> implements IMachineProper
 	}
 
 	@Override
-	public AxisAlignedBB getBoundingBox(BlockPos pos, IBlockState state) {
+	public AxisAlignedBB getBoundingBox(IBlockAccess world, BlockPos pos, IBlockState state) {
 		return boundingBox;
 	}
 
 	@Override
 	@Nullable
-	public RayTraceResult collisionRayTrace(World world, BlockPos pos, Vec3d startVec, Vec3d endVec) {
-		return BlockUtil.collisionRayTrace(pos, startVec, endVec, boundingBox);
+	public RayTraceResult collisionRayTrace(World world, BlockPos pos, IBlockState state, Vec3d startVec, Vec3d endVec) {
+		return BlockUtil.collisionRayTrace(pos, startVec, endVec, getBoundingBox(world, pos, state));
 	}
 
 	@Override

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "forestry:habitatformer/hygroregulator", "y": 180 },
+		"facing=east": { "model": "forestry:habitatformer/hygroregulator", "y": -90 },
+		"facing=south": { "model": "forestry:habitatformer/hygroregulator" },
+		"facing=west": { "model": "forestry:habitatformer/hygroregulator", "y": 90 }
+	}
+}

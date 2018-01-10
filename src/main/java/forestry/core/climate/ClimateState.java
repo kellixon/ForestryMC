@@ -21,37 +21,37 @@ import forestry.api.climate.IClimateState;
 class ClimateState implements IClimateState, IClimateInfo {
 
 	// The minimum climate state.
-	public static final ClimateState MIN = new ClimateState(0.0F, 0.0F, ClimateStateType.DEFAULT);
+	static final ClimateState MIN = new ClimateState(0.0F, 0.0F, ClimateStateType.DEFAULT);
 	// The maximum climate state.
-	public static final ClimateState MAX = new ClimateState(2.0F, 2.0F, ClimateStateType.DEFAULT);
+	static final ClimateState MAX = new ClimateState(2.0F, 2.0F, ClimateStateType.DEFAULT);
 
-	public static final String TEMPERATURE_NBT_KEY = "TEMP";
-	public static final String HUMIDITY_NBT_KEY = "HUMID";
-	public static final String TYPE_NBT_KEY = "TYPE";
+	private static final String TEMPERATURE_NBT_KEY = "TEMP";
+	private static final String HUMIDITY_NBT_KEY = "HUMID";
+	private static final String TYPE_NBT_KEY = "TYPE";
 	public static final String ABSENT_NBT_KEY = "ABSENT";
 
 	protected final ClimateStateType type;
-	protected float temperature;
-	protected float humidity;
+	protected final float temperature;
+	protected final float humidity;
 
-	public ClimateState(IClimateState climateState, ClimateStateType type) {
+	ClimateState(IClimateState climateState, ClimateStateType type) {
 		this(climateState.getTemperature(), climateState.getHumidity(), type);
 	}
 
-	public ClimateState(float temperature, float humidity, ClimateStateType type) {
+	ClimateState(float temperature, float humidity, ClimateStateType type) {
 		this.type = type;
 		this.temperature = type.clamp(temperature);
 		this.humidity = type.clamp(humidity);
 	}
 
-	public ClimateState(NBTTagCompound compound, ClimateStateType type) {
+	ClimateState(NBTTagCompound compound, ClimateStateType type) {
 		this.type = type;
-		readFromNBT(compound);
+		this.temperature = type.clamp(compound.getFloat(TEMPERATURE_NBT_KEY));
+		this.humidity = type.clamp(compound.getFloat(HUMIDITY_NBT_KEY));
 	}
 
-	public ClimateState(NBTTagCompound compound) {
-		this.type = ClimateStateType.values()[compound.getByte(TYPE_NBT_KEY)];
-		readFromNBT(compound);
+	ClimateState(NBTTagCompound compound) {
+		this(compound, ClimateStateType.values()[compound.getByte(TYPE_NBT_KEY)]);
 	}
 	
 	@Override
@@ -61,11 +61,6 @@ class ClimateState implements IClimateState, IClimateInfo {
 		compound.setByte(TYPE_NBT_KEY, (byte)type.ordinal());
 		compound.setBoolean(ABSENT_NBT_KEY, !isPresent());
 		return compound;
-	}
-
-	public void readFromNBT(NBTTagCompound compound) {
-		this.temperature = type.clamp(compound.getFloat(TEMPERATURE_NBT_KEY));
-		this.humidity = type.clamp(compound.getFloat(HUMIDITY_NBT_KEY));
 	}
 
 	@Override

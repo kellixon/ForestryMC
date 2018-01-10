@@ -26,6 +26,8 @@ import forestry.apiculture.multiblock.TileAlvearySieve;
 import forestry.apiculture.tiles.TileApiary;
 import forestry.apiculture.tiles.TileBeeHouse;
 import forestry.book.items.ItemForesterBook;
+import forestry.climatology.tiles.TileClimatiser;
+import forestry.climatology.tiles.TileHabitatFormer;
 import forestry.core.items.ItemAlyzer;
 import forestry.core.items.ItemSolderingIron;
 import forestry.core.tiles.TileAnalyzer;
@@ -47,10 +49,6 @@ import forestry.factory.tiles.TileRaintank;
 import forestry.factory.tiles.TileSqueezer;
 import forestry.factory.tiles.TileStill;
 import forestry.farming.tiles.TileFarm;
-import forestry.greenhouse.items.ItemCamouflageSprayCan;
-import forestry.greenhouse.tiles.TileClimatiser;
-import forestry.greenhouse.tiles.TileGreenhouse;
-import forestry.greenhouse.tiles.TileHygroregulator;
 import forestry.mail.items.ItemCatalogue;
 import forestry.mail.items.ItemLetter;
 import forestry.mail.tiles.TileMailbox;
@@ -100,16 +98,15 @@ public class GuiIdRegistry {
 				//Farm Module
 				TileFarm.class,
 
+				//Climatology
+				TileHabitatFormer.class,
+				TileClimatiser.class,
+
 				//Sorting Module
 				TileGeneticFilter.class,
 
 				//Cultivation Module
 				TilePlanter.class,
-
-				//Greenhouse Module
-				TileGreenhouse.class,
-				TileClimatiser.class,
-				TileHygroregulator.class,
 
 				//Power Module
 				TileEngineBiogas.class,
@@ -131,9 +128,7 @@ public class GuiIdRegistry {
 				ItemHabitatLocator.class,
 				ItemImprinter.class,
 				ItemLetter.class,
-				ItemSolderingIron.class,
-				ItemCamouflageSprayCan.class,
-				ItemForesterBook.class
+				ItemSolderingIron.class
 		));
 
 		registerGuiHandlers(GuiType.Entity, Arrays.asList(

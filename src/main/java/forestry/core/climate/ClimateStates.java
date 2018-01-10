@@ -15,7 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import forestry.api.climate.ClimateStateType;
 import forestry.api.climate.IClimateState;
 import forestry.api.climate.IClimateStates;
-import forestry.greenhouse.climate.modifiers.ClimateSourceModifier;
+import forestry.climatology.climate.modifiers.ClimateSourceModifier;
 
 public final class ClimateStates implements IClimateStates {
 

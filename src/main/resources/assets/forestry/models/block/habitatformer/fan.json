@@ -1,0 +1,6 @@
+{
+	"parent": "forestry:block/habitatformer/climatiser",
+	"textures": {
+		"base": "forestry:blocks/habitatformer/fan"
+	}
+}

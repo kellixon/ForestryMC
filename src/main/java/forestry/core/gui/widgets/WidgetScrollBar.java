@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.math.MathHelper;
 
 import forestry.core.gui.Drawable;
+
 import org.lwjgl.input.Mouse;
 
 public class WidgetScrollBar extends Widget {

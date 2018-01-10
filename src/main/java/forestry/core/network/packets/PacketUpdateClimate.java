@@ -15,25 +15,23 @@ import java.io.IOException;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 
-import forestry.api.greenhouse.IClimateHousing;
-import forestry.api.multiblock.IGreenhouseComponent;
-import forestry.core.multiblock.MultiblockUtil;
+import forestry.api.climatology.IHabitatFormerHousing;
+import forestry.climatology.api.climate.IClimateLogic;
+import forestry.climatology.climate.ClimateLogic;
 import forestry.core.network.ForestryPacket;
 import forestry.core.network.IForestryPacketClient;
 import forestry.core.network.IForestryPacketHandlerClient;
 import forestry.core.network.IStreamable;
 import forestry.core.network.PacketBufferForestry;
 import forestry.core.network.PacketIdClient;
-import forestry.greenhouse.api.climate.IClimateContainer;
-import forestry.greenhouse.climate.ClimateContainer;
-import forestry.greenhouse.multiblock.IGreenhouseControllerInternal;
+import forestry.core.tiles.TileUtil;
 
 public class PacketUpdateClimate extends ForestryPacket implements IForestryPacketClient {
 
-	BlockPos pos;
-	ClimateContainer container;
+	private BlockPos pos;
+	private ClimateLogic container;
 	
-	public PacketUpdateClimate(BlockPos pos, ClimateContainer container) {
+	public PacketUpdateClimate(BlockPos pos, ClimateLogic container) {
 		this.pos = pos;
 		this.container = container;
 	}
@@ -53,28 +51,16 @@ public class PacketUpdateClimate extends ForestryPacket implements IForestryPack
 		@Override
 		public void onPacketData(PacketBufferForestry data, EntityPlayer player) throws IOException {
 			BlockPos position = data.readBlockPos();
-			//TODO:Greenhouse Api
-			/*IClimateHousing housing = TileUtil.getTile(player.world, position, IClimateHousing.class);
-			if(housing != null){
-				IClimateContainer container = housing.getClimateContainer();
-				if(container != null && container instanceof IStreamable){
-					IStreamable streamable = (IStreamable) container;
-					streamable.readData(data);
-					IClimateHousing parent = container.getParent();
-					parent.onUpdateClimate();
-				}
-			}*/
-			IGreenhouseControllerInternal controller = MultiblockUtil.getController(player.world, position, IGreenhouseComponent.class);
-			if(controller == null){
+			IHabitatFormerHousing housing = TileUtil.getTile(player.world, position, IHabitatFormerHousing.class);
+			if(housing == null){
 				return;
 			}
-			IClimateContainer container = controller.getClimateContainer();
-			if(container != null && container instanceof IStreamable){
-				IStreamable streamable = (IStreamable) container;
+			IClimateLogic logic = housing.getLogic();
+			if(logic instanceof IStreamable){
+				IStreamable streamable = (IStreamable) logic;
 				streamable.readData(data);
-				IClimateHousing parent = container.getParent();
-				parent.onUpdateClimate();
 			}
+			housing.onUpdateClimate();
 		}
 	}
 }

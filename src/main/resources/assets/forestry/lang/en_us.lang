@@ -852,14 +852,6 @@ for.errors.no_fertilizer.help=Farms require fertilizer for function. Compost is 
 for.errors.no_liquid.desc=No Water
 for.errors.no_liquid.help=Depending on rainfall, temperature and humidity farms need to be supplied with varying amounts of water.
 
-# GREENHOUSE
-for.errors.not_closed.desc=Roof Not Closed
-for.errors.not_closed.help=The roof of the greenhouse is not closed.
-for.errors.not_loaded.desc=Not Loaded
-for.errors.not_loaded.help=One chunk of the greenhouse is not loaded.
-for.errors.too_large.desc=Too Large
-for.errors.too_large.help=The greenhouse is too large for its controller or it is not closed at a position.
-
 ####################
 # APICULTURE
 ####################
@@ -1152,15 +1144,8 @@ for.multiblock.farm.error.needPlainBand=The Farm must have plain farm blocks for
 for.multiblock.farm.error.needPlainInterior=The Farm must have plain farm blocks for the interior.
 for.multiblock.farm.error.needGearbox=The farm must have a gearbox to accept power and do work.
 
-for.multiblock.greenhouse.error.needPlainOnTop=The Greenhouse must have plain greenhouse blocks for the top level.
-for.multiblock.greenhouse.error.needPlainInterior=The Greenhouse must have plain greenhouse blocks for the interior.
-for.multiblock.greenhouse.error.space.notclosed=The Greenhouse must be closed. Some blocks are missing or they are not a valid wall block.
-for.multiblock.greenhouse.error.space.unloaded=A part of the Greenhouse is in an unloaded chunk. All chunks around the greenhouse must to be loaded.
-for.multiblock.greenhouse.error.needSpace=The Greenhouse must not stand in the range of an other Greenhouse.
-
 for.multiblock.alveary.type=Alveary
 for.multiblock.farm.type=Farm
-for.multiblock.greenhouse.type=Greenhouse
 
 ####################
 # ARBORICULTURE
@@ -1434,56 +1419,36 @@ for.gui.planter.east=E
 for.gui.planter.west=W
 
 ####################
-# GREENHOUSE
+# CLIMATOLAGY
 ####################
-for.gui.greenhouse.title=Greenhouse
-for.gui.greenhouse.hygroregulator.title=Greenhouse Hygroregulator
+tile.for.habitatformer.name=Habitatformer
+tile.for.habitatformer_hygroregulator.name=Habitatformer Hygroregulator
+tile.for.habitatformer_heater.name=Habitatformer Heater
+tile.for.habitatformer_fan.name=Habitatformer Fan
 
-tile.for.greenhouse.tooltip=Multi-Block: 3x2x3 - 5x5x5
-tile.for.greenhouse.camouflage.tooltip=This block can be camouflaged, that means that you can customise the model of this block.
-tile.for.greenhouse.plain.name=Greenhouse Block
-tile.for.greenhouse.gearbox.name=Greenhouse Energy Distributor
-tile.for.greenhouse.control.name=Greenhouse Control
-tile.for.greenhouse.screen.name=Greenhouse Screen
-tile.for.greenhouse.window_up.name=Greenhouse Roof Window
-tile.for.greenhouse.window.name=Greenhouse Window
-tile.for.climatiser.fan.name=Greenhouse Fan
-tile.for.climatiser.heater.name=Greenhouse Heater
-tile.for.climatiser.dehumidifier.name=Greenhouse Dehumidifier
-tile.for.climatiser.humidifier.name=Greenhouse Humidifier
-tile.for.climatiser.hygro.name=Greenhouse Hygroregulator
+item.for.habitat_screen.name=Portable Greenhouse Screen
 
-item.for.greenhouse_screen.name=Portable Greenhouse Screen
+for.gui.habitatformer.climate.target=Targeted: %s
+for.gui.habitatformer.climate.value=Value: %s
+for.gui.habitatformer.climate.temperature=Temperature
+for.gui.habitatformer.climate.humidity=Humidity
 
-for.gui.modifier.sources.range.up=Range Up: %s
-for.gui.modifier.sources.range.down=Range Down: %s
-for.gui.modifier.sources.change=Change: %s
-for.gui.modifier.rain=Rain: %s
-for.gui.modifier.time=Time: %s
-for.gui.modifier.altitude=Altitude: %s
-for.gui.modifier.title=Modifiers
-for.gui.sources=Climate Sources: %s
-for.gui.modifier.weather.title=Weather
-for.gui.modifier.time.title=Time
-for.gui.modifier.altitude.title=Altitude
-for.gui.modifier.sources.title=Climate Sources
+for.message.habitat_screen.fail=You only can use this item if it is linked to a greenhouse
+for.message.habitat_screen.position=This item is now linked to a greenhouse
+for.message.habitat_screen.preview.active=Switched preview mod to active
+for.message.habitat_screen.preview.inactive=Switched preview mod to inactive
+for.message.habitat_screen.center=You have set the center of the greenhouse to the coordinates
+for.message.habitat_screen.away=You are too far away from the greenhouse to use this item
+for.message.habitat_screen.notassembled=You only can link this item to the an assembled greenhouse
 
-for.message.greenhouse_screen.fail=You only can use this item if it is linked to a greenhouse
-for.message.greenhouse_screen.position=This item is now linked to a greenhouse
-for.message.greenhouse_screen.preview.active=Switched preview mod to active
-for.message.greenhouse_screen.preview.inactive=Switched preview mod to inactive
-for.message.greenhouse_screen.center=You have set the center of the greenhouse to the coordinates
-for.message.greenhouse_screen.away=You are too far away from the greenhouse to use this item
-for.message.greenhouse_screen.notassembled=You only can link this item to the an assembled greenhouse
-
-for.greenhouse_screen.mode=Preview Mode: %s
-for.greenhouse_screen.mode.active=Active
-for.greenhouse_screen.mode.inactive=Inactive
-for.greenhouse_screen.state=State: %s
-for.greenhouse_screen.state.linked=Linked to the position (%s, %s, %s)
-for.greenhouse_screen.state.fail=Not Linked
-for.greenhouse_screen.temperature=Temperature: %s
-for.greenhouse_screen.humidity=Humidity: %s
+for.habitat_screen.mode=Preview Mode: %s
+for.habitat_screen.mode.active=Active
+for.habitat_screen.mode.inactive=Inactive
+for.habitat_screen.state=State: %s
+for.habitat_screen.state.linked=Linked to the position (%s, %s, %s)
+for.habitat_screen.state.fail=Not Linked
+for.habitat_screen.temperature=Temperature: %s
+for.habitat_screen.humidity=Humidity: %s
 
 ####################
 # LEPIDOPTEROLOGY
